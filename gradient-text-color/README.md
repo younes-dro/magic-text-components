@@ -22,4 +22,4 @@ A custom Gutenberg format type that allows users to apply gradient colors to tex
    import './gradient-text-color';
 
 ## Demo
-[enter link description here](https://www.awesomescreenshot.com/video/37866815?key=43be1d30dc3033eba865e0f43c999e60)
+[Demo video here](https://www.awesomescreenshot.com/video/37866815?key=43be1d30dc3033eba865e0f43c999e60)
