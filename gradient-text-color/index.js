@@ -9,9 +9,6 @@ import {
   Button,
 } from "@wordpress/components";
 
-const LABEL_GRADIENT_DEG = __("Gradient direction");
-const LABEL_APPLY_BUTTON = __("Apply");
-
 const GradientColorUI = ({
   onClose,
   onChange,
@@ -22,6 +19,9 @@ const GradientColorUI = ({
   gradientEndColor,
   setGradientEndColor,
   popoverAnchor,
+  LABEL_GRADIENT_DEG,
+  LABEL_APPLY_BUTTON,
+  LABEL_POPOVER_TITLE,
 }) => {
   return (
     <Popover
@@ -31,7 +31,7 @@ const GradientColorUI = ({
       onClose={onClose}
       anchor={popoverAnchor}
     >
-      <h4>Select Gradient colors and deg</h4>
+      <h4>{LABEL_POPOVER_TITLE}</h4>
       <ColorPicker
         color={gradientStartColor}
         onChange={(startColor) => setGradientStartColor(startColor)}
@@ -58,12 +58,24 @@ const GradientColorUI = ({
   );
 };
 
-const GradientTextColor = ({ isActive, onChange, value }) => {
+const GradientTextColor = ({
+  isActive,
+  onChange,
+  value,
+  textDomain = "magic-text-block",
+}) => {
   const [isAddingGradient, setIsAddingGradient] = useState(false);
   const [popoverAnchor, setPopoverAnchor] = useState(null);
   const [gradientStartColor, setGradientStartColor] = useState("#fff");
   const [gradientEndColor, setGradientEndColor] = useState("#000");
   const [gradientDeg, setGradientDeg] = useState("90deg");
+
+  const LABEL_GRADIENT_DEG =
+    __("Gradient direction", textDomain) || "Gradient direction";
+  const LABEL_APPLY_BUTTON = __("Apply", textDomain) || "Apply";
+  const LABEL_POPOVER_TITLE =
+    __("Select Gradient colors and deg", textDomain) ||
+    "Select Gradient colors and deg";
 
   const gradientCSS = useMemo(
     () =>
@@ -77,6 +89,7 @@ const GradientTextColor = ({ isActive, onChange, value }) => {
         type: "magic-text/gradient",
         attributes: {
           style: `background: ${gradientCSS}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;`,
+          class: "magic-text-gradient",
         },
       })
     );
@@ -103,6 +116,9 @@ const GradientTextColor = ({ isActive, onChange, value }) => {
           gradientEndColor={gradientEndColor}
           setGradientEndColor={setGradientEndColor}
           popoverAnchor={popoverAnchor}
+          LABEL_GRADIENT_DEG={LABEL_GRADIENT_DEG}
+          LABEL_APPLY_BUTTON={LABEL_APPLY_BUTTON}
+          LABEL_POPOVER_TITLE={LABEL_POPOVER_TITLE}
         />
       )}
     </>
@@ -112,7 +128,7 @@ const GradientTextColor = ({ isActive, onChange, value }) => {
 registerFormatType("magic-text/gradient", {
   title: "Gradient",
   tagName: "span",
-  className: "has-gradient-color",
+  className: null,
   attributes: {
     style: "style",
   },
