@@ -62,7 +62,7 @@ const GradientTextColor = ({
   isActive,
   onChange,
   value,
-  textDomain = "magic-text-block",
+  textDomain = "magic-text",
 }) => {
   const [isAddingGradient, setIsAddingGradient] = useState(false);
   const [popoverAnchor, setPopoverAnchor] = useState(null);

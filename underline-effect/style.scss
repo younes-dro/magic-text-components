@@ -1,0 +1,16 @@
+.magic-text-underline-clip-effect {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 95%;
+    width: 150%;
+    aspect-ratio: 3 / 1;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 50%;
+    border: 6px solid var(--underline-border-color, hsl(130 80% 50%));
+    clip-path: polygon(0 0, 50% 50%, 100% 0);
+  }
+}
