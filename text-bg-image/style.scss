@@ -1,0 +1,20 @@
+.magic-text-bg-image {
+  display: inline-block;
+  background-image: var(--text-bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: var(--text-size, 120px);
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: var(--text-shadow, none);
+}
+.magic-text-bg-popover {
+  .components-popover__content {
+    min-width: 320px !important;
+  }
+}
