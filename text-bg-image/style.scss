@@ -1,0 +1,27 @@
+.magic-text-bg-image {
+  display: inline-block;
+  background-image: var(--text-bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: var(--text-size, 16px);
+  font-weight: bold;
+  text-stroke: 1px rgba(0,0,0,0.2);
+  -webkit-text-stroke: 1px rgba(0,0,0,0.2);
+  paint-order: stroke fill;
+
+  /* Fallback for Firefox */
+  @supports not (-webkit-text-stroke: 1px black) {
+    text-shadow:
+      0 0 1px rgba(0,0,0,0.2),
+      0 0 2px rgba(0,0,0,0.1);
+  }
+}
+.magic-text-bg-popover {
+  .components-popover__content {
+    min-width: 320px !important;
+  }
+}

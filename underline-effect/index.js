@@ -87,7 +87,7 @@ const UnderlineEffect = ({
 
 registerFormatType("magic-text/underline-effect", {
   title: __("Underline Effect", "magic-text"),
-  tagName: "span",
+  tagName: "i",
   className: null,
   attributes: {
     style: "style",
