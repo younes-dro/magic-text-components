@@ -7,7 +7,7 @@ import {
   MediaUpload,
   MediaUploadCheck,
 } from "@wordpress/block-editor";
-import { Popover, Button } from "@wordpress/components";
+import { Popover, Button, FontSizePicker } from "@wordpress/components";
 
 const textDomain = "magic-text";
 
@@ -17,15 +17,36 @@ const LABEL_POPOVER_TITLE =
 
 const LABEL_TOOLBAR_TITLE = __("Text bg image", textDomain) || "Text Bg Image";
 
-const TextBgImageUI = ({ onClose, onChange, setImageUrl, popoverAnchor }) => {
+const LABEL_BUTTON_APPLY = __("Apply", textDomain) || "Apply";
+
+const TextBgImageUI = ({
+  onClose,
+  onChange,
+  setImageUrl,
+  popoverAnchor,
+  fontSize,
+  setFontSize,
+}) => {
   const ALLOWED_MEDIA_TYPES = ["image"];
   const LABEL_OPEN_MEDIA =
     __("Open Media Library", textDomain) || "Open Media Library";
+
+  const fontSizes = [
+    {
+      name: __("Small"),
+      slug: "small",
+      size: 12,
+    },
+    {
+      name: __("Big"),
+      slug: "big",
+      size: 26,
+    },
+  ];
+  const fallbackFontSize = 16;
+
   return (
-    <Popover
-      anchor={popoverAnchor}
-      className="magic-text-bg-popover" // Add custom class
-    >
+    <Popover anchor={popoverAnchor} className="magic-text-bg-popover">
       <div style={{ minWidth: "320px", padding: "16px" }}>
         <h4 style={{ marginBottom: "12px" }}>{LABEL_POPOVER_TITLE}</h4>
         <MediaUploadCheck>
@@ -43,6 +64,13 @@ const TextBgImageUI = ({ onClose, onChange, setImageUrl, popoverAnchor }) => {
             )}
           />
         </MediaUploadCheck>
+        <FontSizePicker
+          __next40pxDefaultSize
+          fallbackFontSize={fallbackFontSize}
+          fontSizes={fontSizes}
+          value={fontSize}
+          onChange={(newFontSize) => setFontSize(newFontSize)}
+        />
         <Button
           variant="primary"
           onClick={() => {
@@ -51,7 +79,7 @@ const TextBgImageUI = ({ onClose, onChange, setImageUrl, popoverAnchor }) => {
           }}
           style={{ width: "100%" }}
         >
-          Apply
+          {LABEL_BUTTON_APPLY}
         </Button>
       </div>
     </Popover>
@@ -62,23 +90,24 @@ const TextBgImage = ({ value, onChange, isActive }) => {
   const [isAddingTxtBg, setIsAddingTxtBg] = useState(false);
   const [popoverAnchor, setPopoverAnchor] = useState();
   const [imageUrl, setImageUrl] = useState("");
+  const [fontSize, setFontSize] = useState("20");
 
   const applyTxtBg = useCallback(() => {
     onChange(
       toggleFormat(value, {
         type: "magic-text/text-bg-image",
         attributes: {
-          style: `--text-bg-image: url('${imageUrl}')`,
+          style: `--text-bg-image: url('${imageUrl}'); --text-size: ${fontSize}`,
           class: "magic-text-bg-image",
         },
       })
     );
-  }, [onChange, value, imageUrl]);
+  }, [onChange, value, imageUrl, fontSize]);
   return (
     <>
       <div ref={setPopoverAnchor}>
         <RichTextToolbarButton
-          icon="editor-code"
+          icon="format-image"
           title={LABEL_TOOLBAR_TITLE}
           onClick={() => setIsAddingTxtBg(true)}
           isActive={isActive}
@@ -90,6 +119,8 @@ const TextBgImage = ({ value, onChange, isActive }) => {
           onChange={applyTxtBg}
           setImageUrl={setImageUrl}
           popoverAnchor={popoverAnchor}
+          fontSize={fontSize}
+          setFontSize={setFontSize}
         />
       )}
     </>

@@ -7,11 +7,18 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: var(--text-size, 120px);
+  font-size: var(--text-size, 16px);
   font-weight: bold;
-  text-transform: uppercase;
-  line-height: 1;
-  text-shadow: var(--text-shadow, none);
+  text-stroke: 1px rgba(0,0,0,0.2);
+  -webkit-text-stroke: 1px rgba(0,0,0,0.2);
+  paint-order: stroke fill;
+
+  /* Fallback for Firefox */
+  @supports not (-webkit-text-stroke: 1px black) {
+    text-shadow:
+      0 0 1px rgba(0,0,0,0.2),
+      0 0 2px rgba(0,0,0,0.1);
+  }
 }
 .magic-text-bg-popover {
   .components-popover__content {
