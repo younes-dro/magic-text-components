@@ -60,17 +60,25 @@ const UnderlineEffect = ({
     );
   }, [borderColor, onChange, value]);
 
+  const handleToolbarClick = useCallback(() => {
+    if (isActive) {
+      onChange(toggleFormat(value, { type: "magic-text/underline-effect" }));
+    } else {
+      setIsAddingUnderline(true);
+    }
+  }, [isActive, onChange, value]);
+
   return (
     <>
       <div ref={setPopoverAnchor}>
         <RichTextToolbarButton
           icon="editor-underline"
           title={__("Underline Effect", "magic-text")}
-          onClick={() => setIsAddingUnderline(true)}
+          onClick={handleToolbarClick}
           isActive={isActive}
         />
       </div>
-      {isAddingUnderline && (
+      {!isActive && isAddingUnderline && (
         <UnderlineEffectUI
           onClose={() => setIsAddingUnderline(false)}
           onChange={applyUnderlineEffect}

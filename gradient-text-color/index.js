@@ -95,17 +95,25 @@ const GradientTextColor = ({
     );
   }, [gradientCSS, onChange, value]);
 
+		const handleToolbarClick = useCallback(() => {
+			if (isActive) {
+				onChange(toggleFormat(value, { type: "magic-text/gradient" }));
+			} else {
+				setIsAddingGradient(true);
+			}
+		}, [isActive, onChange, value]);
+
   return (
     <>
       <div ref={setPopoverAnchor}>
         <RichTextToolbarButton
           icon="editor-code"
           title="Gradient Text Color"
-          onClick={() => setIsAddingGradient(true)}
+          onClick={handleToolbarClick}
           isActive={isActive}
         />
       </div>
-      {isAddingGradient && (
+      {!isActive && isAddingGradient && (
         <GradientColorUI
           onClose={() => setIsAddingGradient(false)}
           onChange={applyGradient}
