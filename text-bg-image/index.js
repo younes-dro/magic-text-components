@@ -103,17 +103,25 @@ const TextBgImage = ({ value, onChange, isActive }) => {
       })
     );
   }, [onChange, value, imageUrl, fontSize]);
+
+  const handleToolbarClick = useCallback(() => {
+    if (isActive) {
+      onChange(toggleFormat(value, { type: "magic-text/text-bg-image" }));
+    } else {
+      setIsAddingTxtBg(true);
+    }
+  }, [isActive, onChange, value]);
   return (
     <>
       <div ref={setPopoverAnchor}>
         <RichTextToolbarButton
           icon="format-image"
           title={LABEL_TOOLBAR_TITLE}
-          onClick={() => setIsAddingTxtBg(true)}
+          onClick={handleToolbarClick}
           isActive={isActive}
         />
       </div>
-      {isAddingTxtBg && (
+      {!isActive && isAddingTxtBg && (
         <TextBgImageUI
           onClose={() => setIsAddingTxtBg(false)}
           onChange={applyTxtBg}
