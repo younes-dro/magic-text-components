@@ -2,7 +2,7 @@
   --stroke-color: transparent;
   --stroke-width: 1px;
   --gradient-stroke: linear-gradient(
-    135deg,
+    to right,
     #09f1b8,
     #00a2ff,
     #ff00d2,
@@ -14,8 +14,6 @@
   background-image: var(--gradient-stroke);
   -webkit-text-stroke-color: var(--stroke-color);
   -webkit-text-stroke-width: var(--stroke-width);
-  text-stroke-color: var(--stroke-color);
-  text-stroke-width: var(--stroke-width);
   display: inline-block;
   padding: 0.1em;
 
@@ -29,5 +27,5 @@
   }
 }
 .editor-styles-wrapper .magic-gradient-stroke {
-	background-color: rgba(0,0,0,0.1);
-  }
+  background-color: rgba(0, 0, 0, 0.1);
+}

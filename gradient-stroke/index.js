@@ -18,19 +18,23 @@ const GradientStrokeUI = ({
   strokeWidth,
   setStrokeWidth,
   popoverAnchor,
+  LABEL_POPOVER_TITLE,
+  LABEL_GRADIENT_STROKE,
+  LABEL_GRADIENT_WIDTH,
+  LABEL_APPLY_BUTTON,
 }) => {
   return (
     <Popover anchor={popoverAnchor} className="gradient-stroke-popover">
-      <h4>{__("Gradient Stroke Settings", "magic-text")}</h4>
+      <h4>{LABEL_POPOVER_TITLE}</h4>
 
       <GradientPicker
         value={gradient}
         onChange={setGradient}
-        label={__("Stroke Gradient", "magic-text")}
+        label={LABEL_GRADIENT_STROKE}
       />
 
       <RangeControl
-        label={__("Stroke Width", "magic-text")}
+        label={LABEL_GRADIENT_WIDTH}
         value={strokeWidth}
         onChange={setStrokeWidth}
         min={0.1}
@@ -40,19 +44,31 @@ const GradientStrokeUI = ({
       />
 
       <Button variant="primary" onClick={onChange}>
-        {__("Apply", "magic-text")}
+        {LABEL_APPLY_BUTTON}
       </Button>
     </Popover>
   );
 };
 
-const GradientStroke = ({ isActive, value, onChange }) => {
+const GradientStroke = ({
+  isActive,
+  value,
+  onChange,
+  textDomain = "magic-text",
+}) => {
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
   const [popoverAnchor, setPopoverAnchor] = useState();
   const [gradient, setGradient] = useState(
-    "linear-gradient(135deg, #09f1b8, #00a2ff, #ff00d2, #fed90f)"
+    "linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f)"
   );
   const [strokeWidth, setStrokeWidth] = useState(1);
+
+  const LABEL_POPOVER_TITLE =
+    __("Gradient Stroke Settings", textDomain) || "Gradient Stroke Settings";
+  const LABEL_GRADIENT_STROKE =
+    __("Stroke Gradient", textDomain) || "Stroke Gradient";
+  const LABEL_GRADIENT_WIDTH = __("Stroke Width", textDomain) || "Stroke Width";
+  const LABEL_APPLY_BUTTON = __("Apply", textDomain) || "Apply";
 
   const applyGradientStroke = useCallback(() => {
     onChange(
@@ -69,13 +85,21 @@ const GradientStroke = ({ isActive, value, onChange }) => {
     );
   }, [gradient, strokeWidth, onChange, value]);
 
+  const handleToolbarClick = useCallback(() => {
+    if (isActive) {
+      onChange(toggleFormat(value, { type: "magic-text/gradient-stroke" }));
+    } else {
+      setIsPopoverVisible(true);
+    }
+  }, [isActive, value, onChange]);
+
   return (
     <>
       <div ref={setPopoverAnchor}>
         <RichTextToolbarButton
           icon="admin-appearance"
           title={__("Gradient Stroke", "magic-text")}
-          onClick={() => setIsPopoverVisible(!isPopoverVisible)}
+          onClick={handleToolbarClick}
           isActive={isActive}
         />
       </div>
@@ -91,6 +115,10 @@ const GradientStroke = ({ isActive, value, onChange }) => {
           strokeWidth={strokeWidth}
           setStrokeWidth={setStrokeWidth}
           popoverAnchor={popoverAnchor}
+          LABEL_POPOVER_TITLE={LABEL_POPOVER_TITLE}
+          LABEL_GRADIENT_STROKE={LABEL_GRADIENT_STROKE}
+          LABEL_GRADIENT_WIDTH={LABEL_GRADIENT_WIDTH}
+          LABEL_APPLY_BUTTON={LABEL_APPLY_BUTTON}
         />
       )}
     </>
@@ -100,7 +128,7 @@ const GradientStroke = ({ isActive, value, onChange }) => {
 registerFormatType("magic-text/gradient-stroke", {
   title: __("Gradient Stroke", "magic-text"),
   tagName: "bdo", // Using <bdo> tag to avoid conflicts
-  className: "magic-gradient-stroke",
+  className: null,
   attributes: {
     style: "style",
     class: "class",
