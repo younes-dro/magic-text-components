@@ -24,6 +24,11 @@ A collection of custom Gutenberg blocks and format types that allow users to app
 
 [🎥 Demo video here](https://www.awesomescreenshot.com/video/38083508?key=82ac6ceeec794b24b8e236819a4f1aab)
 
+## Gradient Stroke
+<img src="https://github.com/user-attachments/assets/579bd1ac-ab0c-4e66-9cea-bb6652b96f5a" alt="gutenberg-text-background-image-effect" width="300">
+
+[🎥 Demo video here](https://www.awesomescreenshot.com/video/38191755?key=fbc0cdfce82132bd6dd6bd217c64df5b).
+
 ## Installation
 
 1. Clone the repository:
