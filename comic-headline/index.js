@@ -33,7 +33,6 @@ const ComicHeadlineUI = ({
   setFontFamily,
   fontSize,
   setFontSize,
-  setFontName,
 }) => {
   const fontRadioOptions = FontOptions.map((font) => ({
     label: font.name,
@@ -52,13 +51,7 @@ const ComicHeadlineUI = ({
           }
           selected={fontFamily}
           options={fontRadioOptions}
-          onChange={(newFontFamily) => {
-            setFontFamily(newFontFamily);
-            const newFontName = fontRadioOptions.find(
-              (font) => font.value === newFontFamily
-            )?.label;
-            setFontName(newFontName);
-          }}
+          onChange={(newFontFamily) => setFontFamily(newFontFamily)}
         />
         <FontSizePicker
           __next40pxDefaultSize
@@ -86,7 +79,6 @@ const ComicHeadline = ({ value, onChange, isActive }) => {
   const [isAddComicHeadline, SetIsAddComicHeadline] = useState(false);
   const [popoverAnchor, setPopoverAnchor] = useState();
   const [fontFamily, setFontFamily] = useState("Comic Sans MS");
-  const [fontName, setFontName] = useState("Comic Sans MS");
   const [fontSize, setFontSize] = useState("20");
 
   const applyComicHeadline = useCallback(() => {
@@ -109,41 +101,6 @@ const ComicHeadline = ({ value, onChange, isActive }) => {
     }
   }, [isActive, onChange, value]);
 
-  useEffect(() => {
-    console.log("Create link :" + fontFamily);
-    console.log("fontName :" + fontName);
-
-    if (!fontName) {
-      return;
-    }
-		const integrity = FontOptions.find((font) => font.name === fontName)
-			?.integrity;
-			console.log("integrity :" + integrity);
-    // Remove any existing font link
-    const existingLink = document.querySelector(
-      `link[href*="${fontName.replace(/\s+/g, "+")}"]`
-    );
-    if (existingLink) {
-      document.head.removeChild(existingLink);
-    }
-
-    const fontUrl = `https://fonts.googleapis.com/css2?family=${fontName.replace(
-      /\s+/g,
-      "+"
-    )}&display=swap`;
-    console.log("font URL: " + fontUrl);
-    const link = document.createElement("link");
-    link.href = fontUrl;
-    link.rel = "stylesheet";
-    link.integrity = integrity;
-    link.crossOrigin = "anonymous";
-    // link.onload = () => {}
-    document.head.appendChild(link);
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, [fontName]);
-
   return (
     <>
       <div ref={setPopoverAnchor}>
@@ -163,8 +120,6 @@ const ComicHeadline = ({ value, onChange, isActive }) => {
           setFontFamily={setFontFamily}
           fontSize={fontSize}
           setFontSize={setFontSize}
-          fontName={fontName}
-          setFontName={setFontName}
         />
       )}
     </>

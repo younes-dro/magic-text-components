@@ -1,18 +1,35 @@
 :root {
-  --text-color: #966805;
-  --stroke-color: #000;
   --font-size: 48px;
-  --font-family: "Comic Sans MS", cursive, sans-serif;
-  --text-shadow: 4px 4px 0px #f3c3a3, 8px 8px 0px #000;
-	--letter-spacing: 2px;
+  --font-family: "Comic Sans MS", cursive, sans-serif; /* Fallback for initial render */
 }
 
 .magic-text-comic-headline-effect {
   font-size: var(--font-size);
-  font-family: var(--font-family);
-  // color: var(--text-color);
-  // text-shadow: var(--text-shadow);
-  // font-weight: bold;
-  // letter-spacing: var(--letter-spacing);
+  font-family: var(--font-family); /* Dynamically applies the variable */
   position: relative;
+	// text-shadow: 2px 2px 0px #f3c3a3, 4px 4px 0px #000;
+}
+
+@font-face {
+  font-family: "Bangers";
+  src: url('fonts/bangers-latin-ext.woff2') format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Luckiest Guy"; /* Updated to match FontOptions */
+  src: url('fonts/luckiesguy-latin-ext.woff2') format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Permanent Marker"; /* Updated to match FontOptions */
+  src: url('fonts/permaentmarker-latin.woff2') format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
