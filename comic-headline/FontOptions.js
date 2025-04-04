@@ -4,12 +4,14 @@ export const FontOptions = [
     label: "Comic Sans MS",
     fontFamily: "'Comic Sans MS', cursive, sans-serif",
     fontUrl: "",
+    integrity: "",
   },
   {
     name: "Bangers",
     label: "Bangers",
     fontFamily: "'Bangers', cursive, sans-serif",
     fontUrl: "https://fonts.googleapis.com/css2?family=Bangers&display=swap",
+    integrity: "sha256-tUq6FPs+wHsrxQLEO6lFu9cS5zWA9SL51Q11g1hF/iE=",
   },
   {
     name: "Luckiest Guy",
@@ -17,6 +19,7 @@ export const FontOptions = [
     fontFamily: "'Luckiest Guy', cursive, sans-serif",
     fontUrl:
       "https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap",
+    integrity: "sha256-SXdGXQAWrmRTQLeQs54zvOIDcSdnBpPxVxd/a9R7wuw=",
   },
   {
     name: "Permanent Marker",
@@ -24,8 +27,10 @@ export const FontOptions = [
     fontFamily: "'Permanent Marker', cursive, sans-serif",
     fontUrl:
       "https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap",
+    integrity: "sha256-",
   },
 ];
+
 export const FontSizes = [
   {
     name: "Small",

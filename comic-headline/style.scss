@@ -4,14 +4,15 @@
   --font-size: 48px;
   --font-family: "Comic Sans MS", cursive, sans-serif;
   --text-shadow: 4px 4px 0px #f3c3a3, 8px 8px 0px #000;
+	--letter-spacing: 2px;
 }
 
-.comic-text {
+.magic-text-comic-headline-effect {
   font-size: var(--font-size);
   font-family: var(--font-family);
-  color: var(--text-color);
-  text-shadow: var(--text-shadow);
-  font-weight: bold;
-  letter-spacing: 2px;
+  // color: var(--text-color);
+  // text-shadow: var(--text-shadow);
+  // font-weight: bold;
+  // letter-spacing: var(--letter-spacing);
   position: relative;
 }
