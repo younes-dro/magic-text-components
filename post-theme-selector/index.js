@@ -57,7 +57,7 @@ const ThemeDocumentSettingsPanel = () => {
 							value={savedTheme || "default"}
 							onChange={(e) => {
 								editPost({
-									meta: { magic_text_post_theme_meta: e.target.value },
+									meta: { magic_text_theme_meta: e.target.value },
 								});
 							}}
 						>
