@@ -1,0 +1,153 @@
+// Popsicle Theme SCSS
+
+$popsicle-background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff6a5c);
+$popsicle-text: #ffffff;
+$popsicle-primary: #ff6a5c;
+$popsicle-secondary: #ff758c;
+$popsicle-border: rgba(255, 255, 255, 0.3);
+$popsicle-hover: rgba(255, 255, 255, 0.2);
+$popsicle-shadow: rgba(0, 0, 0, 0.2);
+
+body.theme-popsicle {
+  background: $popsicle-background;
+  color: $popsicle-text;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  // Headings
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $popsicle-text;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  // Links
+  a {
+    color: $popsicle-primary;
+    text-decoration: none;
+
+    &:hover {
+      color: $popsicle-secondary;
+      text-decoration: underline;
+    }
+  }
+
+  // Buttons
+  button,
+  .button,
+  .wp-block-button__link {
+    background-color: $popsicle-primary;
+    color: $popsicle-text;
+    border: 1px solid $popsicle-border;
+    padding: 10px 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px $popsicle-shadow;
+
+    &:hover {
+      background-color: $popsicle-secondary;
+      box-shadow: 0 6px 8px $popsicle-shadow;
+    }
+  }
+
+  // Input fields
+  input,
+  textarea,
+  select {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $popsicle-text;
+    border: 1px solid $popsicle-border;
+    padding: 8px;
+    border-radius: 4px;
+
+    &:focus {
+      border-color: $popsicle-primary;
+      outline: none;
+    }
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  // Cards
+  .card,
+  .wp-block-group,
+  .wp-block-column {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $popsicle-text;
+    border: 1px solid $popsicle-border;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px $popsicle-shadow;
+  }
+
+  // Navbar
+  .navbar,
+  .site-header {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $popsicle-text;
+    border-bottom: 1px solid $popsicle-border;
+
+    a {
+      color: $popsicle-text;
+
+      &:hover {
+        color: $popsicle-primary;
+      }
+    }
+  }
+
+  // Footer
+  .site-footer {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $popsicle-text;
+    border-top: 1px solid $popsicle-border;
+  }
+
+  // Blockquotes
+  blockquote {
+    border-left: 4px solid $popsicle-primary;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $popsicle-text;
+    padding: 10px 20px;
+    font-style: italic;
+  }
+
+  // Tables
+  table {
+    border: 1px solid $popsicle-border;
+    color: $popsicle-text;
+
+    th {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  // Scrollbars
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $popsicle-primary;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $popsicle-secondary;
+    }
+  }
+}

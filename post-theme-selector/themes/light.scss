@@ -1,0 +1,375 @@
+// Light Mode Theme SCSS
+
+$light-background: #f8f9fa;
+$light-surface: #ffffff;
+$light-primary: #6200ee;
+$light-secondary: #03dac6;
+$light-error: #b00020;
+$light-on-background: #212529;
+$light-on-surface: #212529;
+$light-on-primary: #ffffff;
+$light-on-secondary: #000000;
+$light-on-error: #ffffff;
+$light-border: #e9ecef;
+$light-divider: rgba(0, 0, 0, 0.12);
+$light-shadow: rgba(0, 0, 0, 0.08);
+$light-link: #0d6efd;
+$light-visited-link: #6610f2;
+
+body.theme-light {
+  background-color: $light-background;
+  color: $light-on-background;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  .container,
+  .content-area,
+  .site-content,
+  .entry-content,
+  .widget,
+  .comments-area,
+  aside,
+  nav {
+    background-color: $light-surface;
+    color: $light-on-surface;
+  }
+
+  // Headings
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: darken($light-on-surface, 10%);
+  }
+
+  // Links
+  a {
+    color: $light-link;
+
+    &:visited {
+      color: $light-visited-link;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  // Borders
+  .border,
+  input,
+  textarea,
+  select,
+  table,
+  th,
+  td,
+  .wp-block-table,
+  .wp-block-separator,
+  hr {
+    border-color: $light-border;
+  }
+
+  // Form elements
+  input,
+  textarea,
+  select {
+    background-color: $light-surface;
+    color: $light-on-surface;
+    border-color: $light-border;
+
+    &:focus {
+      border-color: $light-primary;
+      outline-color: $light-primary;
+    }
+
+    &::placeholder {
+      color: rgba(33, 37, 41, 0.6);
+    }
+  }
+
+  // Buttons
+  button,
+  .button,
+  .wp-block-button__link,
+  input[type="button"],
+  input[type="submit"] {
+    background-color: $light-primary;
+    color: $light-on-primary;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &.is-secondary {
+      background-color: $light-secondary;
+      color: $light-on-secondary;
+    }
+
+    &.is-danger,
+    &.is-error {
+      background-color: $light-error;
+      color: $light-on-error;
+    }
+
+    &.is-outline {
+      background-color: transparent;
+      color: $light-primary;
+      border-color: $light-primary;
+    }
+  }
+
+  // Code blocks
+  pre,
+  code {
+    background-color: #f5f5f5;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+  }
+
+  // Tables
+  table {
+    border-color: $light-border;
+
+    th {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.01);
+    }
+  }
+
+  // Cards and boxed content
+  .card,
+  .box,
+  .wp-block-group,
+  .wp-block-column,
+  .wp-block-media-text,
+  .wp-block-cover,
+  article,
+  .comment-body {
+    background-color: $light-surface;
+    color: $light-on-surface;
+    box-shadow: 0 2px 4px $light-shadow;
+  }
+
+  // Navbar and menus
+  .navbar,
+  .navigation,
+  .site-header,
+  .menu,
+  .dropdown-menu {
+    background-color: $light-surface;
+    box-shadow: 0 1px 3px $light-shadow;
+
+    a {
+      color: $light-on-surface;
+
+      &:hover {
+        color: $light-primary;
+      }
+    }
+  }
+
+  // Footer
+  .site-footer,
+  .footer {
+    background-color: darken($light-surface, 3%);
+    color: $light-on-surface;
+    border-top: 1px solid $light-border;
+  }
+
+  // Modals and popups
+  .modal,
+  .popup,
+  .dialog {
+    background-color: $light-surface;
+    color: $light-on-surface;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+    .close {
+      color: $light-on-surface;
+    }
+  }
+
+  // Tooltips
+  .tooltip {
+    background-color: $light-primary;
+    color: $light-on-primary;
+  }
+
+  // Accordion/Toggle
+  .accordion,
+  .toggle {
+    border-color: $light-border;
+
+    .accordion-header,
+    .toggle-header {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+  }
+
+  // WordPress specific elements
+  .wp-block-cover,
+  .wp-block-cover-image {
+    &:not(.has-background-dim) {
+      &::before {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  // Media element optimizations
+  img,
+  video {
+    opacity: 1; // Full opacity for light mode
+  }
+
+  // SVG icons
+  svg {
+    fill: $light-on-surface;
+  }
+
+  // Blockquotes
+  blockquote {
+    border-color: $light-primary;
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  // Horizontal rules
+  hr {
+    border-color: $light-border;
+  }
+
+  // Pagination
+  .pagination,
+  .nav-links {
+    .page-numbers {
+      background-color: $light-surface;
+      color: $light-on-surface;
+
+      &.current {
+        background-color: $light-primary;
+        color: $light-on-primary;
+      }
+    }
+  }
+
+  // Selection
+  ::selection {
+    background-color: rgba(98, 0, 238, 0.2);
+    color: $light-on-surface;
+  }
+
+  // Placeholder content
+  .placeholder {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  // Scrollbars
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $light-background;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  // Focus states
+  *:focus {
+    outline-color: $light-primary;
+  }
+
+  // Alert messages
+  .alert,
+  .notice,
+  .message {
+    &.info {
+      background-color: rgba(33, 150, 243, 0.1);
+      border-color: rgba(33, 150, 243, 0.2);
+      color: darken(rgba(33, 150, 243, 1), 20%);
+    }
+
+    &.success {
+      background-color: rgba(76, 175, 80, 0.1);
+      border-color: rgba(76, 175, 80, 0.2);
+      color: darken(rgba(76, 175, 80, 1), 20%);
+    }
+
+    &.warning {
+      background-color: rgba(255, 152, 0, 0.1);
+      border-color: rgba(255, 152, 0, 0.2);
+      color: darken(rgba(255, 152, 0, 1), 20%);
+    }
+
+    &.error {
+      background-color: rgba(244, 67, 54, 0.1);
+      border-color: rgba(244, 67, 54, 0.2);
+      color: darken(rgba(244, 67, 54, 1), 20%);
+    }
+  }
+
+  // Accessibility improvements
+  .screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+  }
+
+  // Print optimization
+  @media print {
+    background-color: white !important;
+    color: black !important;
+
+    a {
+      color: #0000ff !important;
+      text-decoration: underline !important;
+    }
+
+    pre,
+    code {
+      background-color: transparent !important;
+      border: 1px solid #cccccc !important;
+    }
+  }
+}
+
+// For reduced motion preference
+@media (prefers-reduced-motion) {
+  body.theme-light {
+    transition: none;
+
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+// High contrast mode for accessibility
+@media (forced-colors: active) {
+  body.theme-light {
+    forced-color-adjust: auto;
+  }
+}
