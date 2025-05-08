@@ -1,4 +1,5 @@
 // Dark Mode Theme SCSS
+@use "sass:color";
 
 $dark-background: #121212;
 $dark-surface: #1e1e1e;
@@ -18,7 +19,6 @@ $dark-visited-link: #ce93d8;
 
 // Apply dark mode to body with theme-dark class
 body.theme-dark {
-
   background-color: $dark-background;
   color: $dark-on-background;
 
@@ -179,7 +179,7 @@ body.theme-dark {
   // Footer
   .site-footer,
   .footer {
-    background-color: darken($dark-surface, 3%);
+    background-color: color.scale($dark-surface, $lightness: -3%);
     color: $dark-on-surface;
     border-top: 1px solid $dark-border;
   }

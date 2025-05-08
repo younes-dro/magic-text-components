@@ -1,6 +1,8 @@
 // Milkshake Theme SCSS
 // To be used when body has class "theme-milkshake"
 
+@use "sass:color";
+
 // Milkshake theme color variables
 $milkshake-background: #fef6ff;
 $milkshake-surface: #ffffff;
@@ -27,7 +29,9 @@ body.theme-milkshake {
   color: $milkshake-on-background;
 
   // Apply smooth transitions for theme changes
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   // Rounded corners for nearly everything
   * {
@@ -58,17 +62,26 @@ body.theme-milkshake {
   }
 
   // Playful headings with custom underlines
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $milkshake-secondary;
     font-weight: 600;
 
     // Cute underline for headings
     &:after {
-      content: '';
+      content: "";
       display: block;
       width: 100px;
       height: 4px;
-      background: linear-gradient(to right, $milkshake-primary, $milkshake-tertiary);
+      background: linear-gradient(
+        to right,
+        $milkshake-primary,
+        $milkshake-tertiary
+      );
       border-radius: 4px;
       margin-top: 0.3em;
     }
@@ -96,7 +109,7 @@ body.theme-milkshake {
     }
 
     &:hover {
-      color: darken($milkshake-link, 10%);
+      color: color.scale($milkshake-link, $lightness: -10%);
 
       &:after {
         width: 100%;
@@ -106,7 +119,7 @@ body.theme-milkshake {
 
     // Cute underline animation
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       width: 0;
       height: 2px;
@@ -177,18 +190,30 @@ body.theme-milkshake {
     }
 
     &.is-secondary {
-      background: linear-gradient(45deg, $milkshake-secondary, lighten($milkshake-secondary, 15%));
+      background: linear-gradient(
+        45deg,
+        $milkshake-secondary,
+        color.adjust($milkshake-secondary, $lightness: 15%)
+      );
       color: $milkshake-on-secondary;
     }
 
     &.is-tertiary {
-      background: linear-gradient(45deg, $milkshake-tertiary, lighten($milkshake-tertiary, 15%));
+      background: linear-gradient(
+        45deg,
+        $milkshake-tertiary,
+        color.adjust($milkshake-tertiary, $lightness: 15%)
+      );
       color: #333333;
     }
 
     &.is-danger,
     &.is-error {
-      background: linear-gradient(45deg, $milkshake-error, lighten($milkshake-error, 15%));
+      background: linear-gradient(
+        45deg,
+        $milkshake-error,
+        color.adjust($milkshake-error, $lightness: 15%)
+      );
       color: $milkshake-on-error;
     }
 
@@ -292,7 +317,11 @@ body.theme-milkshake {
   // Footer with gradient
   .site-footer,
   .footer {
-    background: linear-gradient(180deg, $milkshake-background 0%, darken($milkshake-background, 3%) 100%);
+    background: linear-gradient(
+      180deg,
+      $milkshake-background 0%,
+      color.scale($milkshake-background, $lightness: -3%) 100%
+    );
     color: $milkshake-on-surface;
     border-top: 1px solid $milkshake-border;
     padding-top: 40px;
@@ -384,7 +413,12 @@ body.theme-milkshake {
   // Horizontal rules with gradient
   hr {
     height: 3px;
-    background: linear-gradient(to right, $milkshake-primary, $milkshake-secondary, $milkshake-tertiary);
+    background: linear-gradient(
+      to right,
+      $milkshake-primary,
+      $milkshake-secondary,
+      $milkshake-tertiary
+    );
     border: none;
     margin: 30px 0;
   }
@@ -411,7 +445,11 @@ body.theme-milkshake {
       }
 
       &.current {
-        background: linear-gradient(45deg, $milkshake-primary, $milkshake-accent);
+        background: linear-gradient(
+          45deg,
+          $milkshake-primary,
+          $milkshake-accent
+        );
         color: $milkshake-on-primary;
         border-color: transparent;
         box-shadow: 0 4px 8px rgba(255, 107, 181, 0.3);
@@ -448,7 +486,11 @@ body.theme-milkshake {
     border: 3px solid rgba(255, 204, 242, 0.3);
 
     &:hover {
-      background: linear-gradient(180deg, darken($milkshake-primary, 5%), darken($milkshake-accent, 5%));
+      background: linear-gradient(
+        180deg,
+        color.scale($milkshake-primary, $lightness: -5%),
+        color.scale($milkshake-accent, $lightness: -5%)
+      );
     }
   }
 
@@ -469,30 +511,31 @@ body.theme-milkshake {
     &.info {
       background-color: rgba(100, 233, 238, 0.15);
       border-color: rgba(100, 233, 238, 0.3);
-      color: darken($milkshake-tertiary, 30%);
+      color: color.scale($milkshake-tertiary, $lightness: -30%);
     }
 
     &.success {
       background-color: rgba(163, 240, 167, 0.15);
       border-color: rgba(163, 240, 167, 0.3);
-      color: darken(#a3f0a7, 40%);
+      color: color.scale(#a3f0a7, $lightness: -40%);
     }
 
     &.warning {
       background-color: rgba(255, 213, 79, 0.15);
       border-color: rgba(255, 213, 79, 0.3);
-      color: darken(#ffd54f, 40%);
+      color: color.scale(#ffd54f, $lightness: -40%);
     }
 
     &.error {
       background-color: rgba(255, 71, 87, 0.15);
       border-color: rgba(255, 71, 87, 0.3);
-      color: darken($milkshake-error, 20%);
+      color: color.scale($milkshake-error, $lightness: -20%);
     }
   }
 
   // Custom list styling
-  ul, ol {
+  ul,
+  ol {
     padding-left: 2em;
 
     li {

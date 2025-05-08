@@ -1,4 +1,5 @@
 // Light Mode Theme SCSS
+@use "sass:color";
 
 $light-background: #f8f9fa;
 $light-surface: #ffffff;
@@ -43,7 +44,7 @@ body.theme-light {
   h4,
   h5,
   h6 {
-    color: darken($light-on-surface, 10%);
+    color: color.scale($light-on-surface, $lightness: -10%);
   }
 
   // Links
@@ -178,7 +179,7 @@ body.theme-light {
   // Footer
   .site-footer,
   .footer {
-    background-color: darken($light-surface, 3%);
+    background-color: color.scale($light-surface, $lightness: -3%);
     color: $light-on-surface;
     border-top: 1px solid $light-border;
   }
@@ -301,25 +302,25 @@ body.theme-light {
     &.info {
       background-color: rgba(33, 150, 243, 0.1);
       border-color: rgba(33, 150, 243, 0.2);
-      color: darken(rgba(33, 150, 243, 1), 20%);
+      background-color: color.scale($light-surface, $lightness: -3%);
     }
 
     &.success {
       background-color: rgba(76, 175, 80, 0.1);
       border-color: rgba(76, 175, 80, 0.2);
-      color: darken(rgba(76, 175, 80, 1), 20%);
+      color: color.scale(rgba(76, 175, 80, 1), $lightness: -20%);
     }
 
     &.warning {
       background-color: rgba(255, 152, 0, 0.1);
       border-color: rgba(255, 152, 0, 0.2);
-      color: darken(rgba(255, 152, 0, 1), 20%);
+      color: color.scale(rgba(255, 152, 0, 1), $lightness: -20%);
     }
 
     &.error {
       background-color: rgba(244, 67, 54, 0.1);
       border-color: rgba(244, 67, 54, 0.2);
-      color: darken(rgba(244, 67, 54, 1), 20%);
+      color: color.scale(rgba(244, 67, 54, 1), $lightness: -20%);
     }
   }
 
