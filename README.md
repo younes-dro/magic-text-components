@@ -20,7 +20,7 @@ A collection of custom Gutenberg blocks and format types that allow users to app
 
 ## Image in Text Background
 
-<img src="https://github.com/user-attachments/assets/06c990ca-b992-406a-b06f-1f6937d65795" alt="gutenberg-text-background-image-effect" width="300">
+![Capture d'écran 2025-05-08 211802](https://github.com/user-attachments/assets/20e63946-a747-434d-ad38-45c3c762db38)
 
 [🎥 Demo video here](https://www.awesomescreenshot.com/video/38083508?key=82ac6ceeec794b24b8e236819a4f1aab)
 
