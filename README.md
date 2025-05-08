@@ -1,3 +1,4 @@
+
 # Magic Text Components
 
 A collection of custom Gutenberg blocks and format types that allow users to apply custom CSS effects to text in the WordPress block editor. These components enhance the design capabilities of the editor, making it easier to create visually appealing text effects.
@@ -28,6 +29,11 @@ A collection of custom Gutenberg blocks and format types that allow users to app
 <img src="https://github.com/user-attachments/assets/579bd1ac-ab0c-4e66-9cea-bb6652b96f5a" alt="gutenberg-text-background-image-effect" width="300">
 
 [🎥 Demo video here](https://www.awesomescreenshot.com/video/38191755?key=fbc0cdfce82132bd6dd6bd217c64df5b).
+
+## Post/Page Theme Selector
+![dark](https://github.com/user-attachments/assets/2a4227af-c9f9-405b-b97e-80e831577fa6)
+
+[🎥 Demo video here](https://www.awesomescreenshot.com/video/39031925?key=aa41ad83e0eedf3e614060c6e2e05ffb)
 
 ## Installation
 
