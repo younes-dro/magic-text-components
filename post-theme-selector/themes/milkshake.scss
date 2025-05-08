@@ -1,0 +1,615 @@
+// Milkshake Theme SCSS
+// To be used when body has class "theme-milkshake"
+
+@use "sass:color";
+
+// Milkshake theme color variables
+$milkshake-background: #fef6ff;
+$milkshake-surface: #ffffff;
+$milkshake-primary: #ff6bb5;
+$milkshake-secondary: #9966cc;
+$milkshake-tertiary: #64e9ee;
+$milkshake-error: #ff4757;
+$milkshake-on-background: #5a4a66;
+$milkshake-on-surface: #5a4a66;
+$milkshake-on-primary: #ffffff;
+$milkshake-on-secondary: #ffffff;
+$milkshake-on-error: #ffffff;
+$milkshake-border: #ffccf2;
+$milkshake-divider: rgba(255, 107, 181, 0.15);
+$milkshake-shadow: rgba(255, 107, 181, 0.1);
+$milkshake-link: #ff6bb5;
+$milkshake-visited-link: #9966cc;
+$milkshake-accent: #ffacdd;
+
+// Apply milkshake theme to body with theme-milkshake class
+body.theme-milkshake {
+  // Background colors
+  background-color: $milkshake-background;
+  color: $milkshake-on-background;
+
+  // Apply smooth transitions for theme changes
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  // Rounded corners for nearly everything
+  * {
+    border-radius: 8px;
+  }
+
+  // Extra rounded buttons
+  button,
+  .button,
+  input[type="button"],
+  input[type="submit"],
+  .wp-block-button__link {
+    border-radius: 24px;
+  }
+
+  // Container elements with subtle gradient background
+  .container,
+  .content-area,
+  .site-content,
+  .entry-content,
+  .widget,
+  .comments-area,
+  aside,
+  nav {
+    background-color: $milkshake-surface;
+    color: $milkshake-on-surface;
+    background-image: linear-gradient(135deg, #ffffff 0%, #fef6ff 100%);
+  }
+
+  // Playful headings with custom underlines
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $milkshake-secondary;
+    font-weight: 600;
+
+    // Cute underline for headings
+    &:after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(
+        to right,
+        $milkshake-primary,
+        $milkshake-tertiary
+      );
+      border-radius: 4px;
+      margin-top: 0.3em;
+    }
+
+    // Different widths for different heading levels
+    &:is(h1, h2):after {
+      width: 150px;
+    }
+
+    &:is(h5, h6):after {
+      width: 70px;
+      height: 3px;
+    }
+  }
+
+  // Links with hover effect
+  a {
+    color: $milkshake-link;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    position: relative;
+
+    &:visited {
+      color: $milkshake-visited-link;
+    }
+
+    &:hover {
+      color: color.scale($milkshake-link, $lightness: -10%);
+
+      &:after {
+        width: 100%;
+        left: 0;
+      }
+    }
+
+    // Cute underline animation
+    &:after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      display: block;
+      right: 0;
+      bottom: -3px;
+      background: $milkshake-primary;
+      transition: width 0.2s ease;
+    }
+  }
+
+  // Borders
+  .border,
+  input,
+  textarea,
+  select,
+  table,
+  th,
+  td,
+  .wp-block-table,
+  .wp-block-separator,
+  hr {
+    border-color: $milkshake-border;
+  }
+
+  // Form elements with pastel styling
+  input,
+  textarea,
+  select {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: $milkshake-on-surface;
+    border: 2px solid $milkshake-border;
+    padding: 10px 16px;
+
+    &:focus {
+      border-color: $milkshake-primary;
+      outline-color: $milkshake-primary;
+      box-shadow: 0 0 0 3px rgba(255, 107, 181, 0.25);
+    }
+
+    &::placeholder {
+      color: rgba(90, 74, 102, 0.6);
+    }
+  }
+
+  // Buttons with gradient backgrounds
+  button,
+  .button,
+  .wp-block-button__link,
+  input[type="button"],
+  input[type="submit"] {
+    background: linear-gradient(45deg, $milkshake-primary, $milkshake-accent);
+    color: $milkshake-on-primary;
+    border: none;
+    padding: 10px 24px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(255, 107, 181, 0.3);
+    transition: all 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 6px 14px rgba(255, 107, 181, 0.4);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 6px rgba(255, 107, 181, 0.3);
+    }
+
+    &.is-secondary {
+      background: linear-gradient(
+        45deg,
+        $milkshake-secondary,
+        color.adjust($milkshake-secondary, $lightness: 15%)
+      );
+      color: $milkshake-on-secondary;
+    }
+
+    &.is-tertiary {
+      background: linear-gradient(
+        45deg,
+        $milkshake-tertiary,
+        color.adjust($milkshake-tertiary, $lightness: 15%)
+      );
+      color: #333333;
+    }
+
+    &.is-danger,
+    &.is-error {
+      background: linear-gradient(
+        45deg,
+        $milkshake-error,
+        color.adjust($milkshake-error, $lightness: 15%)
+      );
+      color: $milkshake-on-error;
+    }
+
+    &.is-outline {
+      background: transparent;
+      color: $milkshake-primary;
+      border: 2px solid $milkshake-primary;
+      box-shadow: none;
+
+      &:hover {
+        background-color: rgba(255, 107, 181, 0.1);
+      }
+    }
+  }
+
+  // Code blocks with softer colors
+  pre,
+  code {
+    background-color: rgba(255, 204, 242, 0.3);
+    color: $milkshake-secondary;
+    border: 1px solid $milkshake-border;
+    border-radius: 8px;
+    font-family: "Monaco", "Menlo", "Consolas", monospace;
+  }
+
+  // Tables with pastel styling
+  table {
+    border-color: $milkshake-border;
+    overflow: hidden;
+
+    th {
+      background-color: rgba(255, 107, 181, 0.1);
+      color: $milkshake-secondary;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(255, 204, 242, 0.2);
+    }
+
+    td {
+      padding: 12px 16px;
+    }
+  }
+
+  // Cards and boxed content with soft shadows
+  .card,
+  .box,
+  .wp-block-group,
+  .wp-block-column,
+  .wp-block-media-text,
+  article,
+  .comment-body {
+    background-color: $milkshake-surface;
+    color: $milkshake-on-surface;
+    box-shadow: 0 6px 18px $milkshake-shadow;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 204, 242, 0.5);
+    padding: 24px;
+  }
+
+  // Special treatment for cover blocks
+  .wp-block-cover {
+    border-radius: 16px;
+    overflow: hidden;
+
+    &:not(.has-background-dim) {
+      &::before {
+        background-color: rgba(255, 107, 181, 0.3);
+      }
+    }
+  }
+
+  // Navbar and menus with glass effect
+  .navbar,
+  .navigation,
+  .site-header,
+  .menu,
+  .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(255, 107, 181, 0.15);
+    border-bottom: 1px solid rgba(255, 204, 242, 0.5);
+
+    a {
+      color: $milkshake-on-surface;
+      font-weight: 500;
+
+      &:hover {
+        color: $milkshake-primary;
+      }
+
+      &:after {
+        bottom: -5px;
+      }
+    }
+  }
+
+  // Footer with gradient
+  .site-footer,
+  .footer {
+    background: linear-gradient(
+      180deg,
+      $milkshake-background 0%,
+      color.scale($milkshake-background, $lightness: -3%) 100%
+    );
+    color: $milkshake-on-surface;
+    border-top: 1px solid $milkshake-border;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  // Modals and popups with glass effect
+  .modal,
+  .popup,
+  .dialog {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: $milkshake-on-surface;
+    box-shadow: 0 10px 40px rgba(255, 107, 181, 0.3);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 204, 242, 0.6);
+
+    .close {
+      color: $milkshake-primary;
+    }
+  }
+
+  // Tooltips with gradient
+  .tooltip {
+    background: linear-gradient(45deg, $milkshake-primary, $milkshake-accent);
+    color: $milkshake-on-primary;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-weight: 500;
+
+    &:after {
+      border-color: $milkshake-primary transparent transparent transparent;
+    }
+  }
+
+  // Accordion/Toggle with pastel colors
+  .accordion,
+  .toggle {
+    border-color: $milkshake-border;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .accordion-header,
+    .toggle-header {
+      background-color: rgba(255, 107, 181, 0.1);
+      color: $milkshake-secondary;
+      padding: 16px 20px;
+      font-weight: 600;
+    }
+
+    .accordion-content,
+    .toggle-content {
+      padding: 20px;
+    }
+  }
+
+  // Media elements with subtle border
+  img,
+  video {
+    border-radius: 12px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 6px 18px rgba(255, 107, 181, 0.15);
+  }
+
+  // SVG icons
+  svg {
+    fill: $milkshake-on-surface;
+  }
+
+  // Blockquotes with custom styling
+  blockquote {
+    border-left: 4px solid $milkshake-primary;
+    background-color: rgba(255, 107, 181, 0.05);
+    padding: 20px 24px;
+    font-style: italic;
+
+    &:before {
+      content: "";
+      font-size: 3em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
+      color: $milkshake-primary;
+      opacity: 0.5;
+    }
+  }
+
+  // Horizontal rules with gradient
+  hr {
+    height: 3px;
+    background: linear-gradient(
+      to right,
+      $milkshake-primary,
+      $milkshake-secondary,
+      $milkshake-tertiary
+    );
+    border: none;
+    margin: 30px 0;
+  }
+
+  // Pagination with cute styling
+  .pagination,
+  .nav-links {
+    .page-numbers {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: $milkshake-on-surface;
+      border: 1px solid $milkshake-border;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 3px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: rgba(255, 107, 181, 0.1);
+        transform: translateY(-2px);
+      }
+
+      &.current {
+        background: linear-gradient(
+          45deg,
+          $milkshake-primary,
+          $milkshake-accent
+        );
+        color: $milkshake-on-primary;
+        border-color: transparent;
+        box-shadow: 0 4px 8px rgba(255, 107, 181, 0.3);
+      }
+    }
+  }
+
+  // Selection
+  ::selection {
+    background-color: rgba(255, 107, 181, 0.3);
+    color: $milkshake-secondary;
+  }
+
+  // Placeholder content
+  .placeholder {
+    background-color: rgba(255, 107, 181, 0.1);
+    border-radius: 8px;
+  }
+
+  // Scrollbars
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 204, 242, 0.3);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, $milkshake-primary, $milkshake-accent);
+    border-radius: 10px;
+    border: 3px solid rgba(255, 204, 242, 0.3);
+
+    &:hover {
+      background: linear-gradient(
+        180deg,
+        color.scale($milkshake-primary, $lightness: -5%),
+        color.scale($milkshake-accent, $lightness: -5%)
+      );
+    }
+  }
+
+  // Focus states
+  *:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 107, 181, 0.4);
+  }
+
+  // Alert messages
+  .alert,
+  .notice,
+  .message {
+    border-radius: 12px;
+    border-width: 2px;
+    padding: 16px 20px;
+
+    &.info {
+      background-color: rgba(100, 233, 238, 0.15);
+      border-color: rgba(100, 233, 238, 0.3);
+      color: color.scale($milkshake-tertiary, $lightness: -30%);
+    }
+
+    &.success {
+      background-color: rgba(163, 240, 167, 0.15);
+      border-color: rgba(163, 240, 167, 0.3);
+      color: color.scale(#a3f0a7, $lightness: -40%);
+    }
+
+    &.warning {
+      background-color: rgba(255, 213, 79, 0.15);
+      border-color: rgba(255, 213, 79, 0.3);
+      color: color.scale(#ffd54f, $lightness: -40%);
+    }
+
+    &.error {
+      background-color: rgba(255, 71, 87, 0.15);
+      border-color: rgba(255, 71, 87, 0.3);
+      color: color.scale($milkshake-error, $lightness: -20%);
+    }
+  }
+
+  // Custom list styling
+  ul,
+  ol {
+    padding-left: 2em;
+
+    li {
+      margin-bottom: 0.5em;
+      position: relative;
+    }
+  }
+
+  ul:not([class]) {
+    list-style: none;
+
+    li:before {
+      content: "•";
+      color: $milkshake-primary;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+  }
+
+  // Cute quotation marks
+  q {
+    position: relative;
+    font-style: italic;
+
+    &:before {
+      content: "";
+      color: $milkshake-primary;
+      font-size: 1.2em;
+    }
+
+    &:after {
+      content: "";
+      color: $milkshake-primary;
+      font-size: 1.2em;
+    }
+  }
+
+  // Typography enhancements
+  p {
+    line-height: 1.6;
+  }
+
+  // Print optimization
+  @media print {
+    background-color: white !important;
+    color: black !important;
+
+    a {
+      color: #ff6bb5 !important;
+      text-decoration: underline !important;
+
+      &:after {
+        display: none;
+      }
+    }
+
+    // Remove shadows and gradients for print
+    * {
+      box-shadow: none !important;
+      background-image: none !important;
+    }
+  }
+}
+
+// For reduced motion preference
+@media (prefers-reduced-motion) {
+  body.theme-milkshake {
+    transition: none;
+
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}

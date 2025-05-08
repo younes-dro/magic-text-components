@@ -1,0 +1,334 @@
+// Dark Mode Theme SCSS
+@use "sass:color";
+
+$dark-background: #121212;
+$dark-surface: #1e1e1e;
+$dark-primary: #bb86fc;
+$dark-secondary: #03dac6;
+$dark-error: #cf6679;
+$dark-on-background: #e0e0e0;
+$dark-on-surface: #e0e0e0;
+$dark-on-primary: #000000;
+$dark-on-secondary: #000000;
+$dark-on-error: #000000;
+$dark-border: #444444;
+$dark-divider: rgba(255, 255, 255, 0.12);
+$dark-shadow: rgba(0, 0, 0, 0.3);
+$dark-link: #90caf9;
+$dark-visited-link: #ce93d8;
+
+// Apply dark mode to body with theme-dark class
+body.theme-dark {
+  background-color: $dark-background;
+  color: $dark-on-background;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  .container,
+  .content-area,
+  .site-content,
+  .entry-content,
+  .widget,
+  .comments-area,
+  aside,
+  nav {
+    background-color: $dark-surface;
+    color: $dark-on-surface;
+  }
+
+  // Headings
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #ffffff;
+  }
+
+  // Links
+  a {
+    color: $dark-link;
+
+    &:visited {
+      color: $dark-visited-link;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  // Borders
+  .border,
+  input,
+  textarea,
+  select,
+  table,
+  th,
+  td,
+  .wp-block-table,
+  .wp-block-separator,
+  hr {
+    border-color: $dark-border;
+  }
+
+  // Form elements
+  input,
+  textarea,
+  select {
+    background-color: $dark-surface;
+    color: $dark-on-surface;
+    border-color: $dark-border;
+
+    &:focus {
+      border-color: $dark-primary;
+      outline-color: $dark-primary;
+    }
+
+    &::placeholder {
+      color: rgba(224, 224, 224, 0.6);
+    }
+  }
+
+  // Buttons
+  button,
+  .button,
+  .wp-block-button__link,
+  input[type="button"],
+  input[type="submit"] {
+    background-color: $dark-primary;
+    color: $dark-on-primary;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &.is-secondary {
+      background-color: $dark-secondary;
+      color: $dark-on-secondary;
+    }
+
+    &.is-danger,
+    &.is-error {
+      background-color: $dark-error;
+      color: $dark-on-error;
+    }
+
+    &.is-outline {
+      background-color: transparent;
+      color: $dark-primary;
+      border-color: $dark-primary;
+    }
+  }
+
+  // Code blocks
+  pre,
+  code {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+  }
+
+  // Tables
+  table {
+    border-color: $dark-border;
+
+    th {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+  }
+
+  // Cards and boxed content
+  .card,
+  .box,
+  .wp-block-group,
+  .wp-block-column,
+  .wp-block-media-text,
+  .wp-block-cover,
+  article,
+  .comment-body {
+    background-color: $dark-surface;
+    color: $dark-on-surface;
+    box-shadow: 0 2px 8px $dark-shadow;
+  }
+
+  // Navbar and menus
+  .navbar,
+  .navigation,
+  .site-header,
+  .menu,
+  .dropdown-menu {
+    background-color: $dark-surface;
+    box-shadow: 0 2px 4px $dark-shadow;
+
+    a {
+      color: $dark-on-surface;
+
+      &:hover {
+        color: $dark-primary;
+      }
+    }
+  }
+
+  // Footer
+  .site-footer,
+  .footer {
+    background-color: color.scale($dark-surface, $lightness: -3%);
+    color: $dark-on-surface;
+    border-top: 1px solid $dark-border;
+  }
+
+  // Modals and popups
+  .modal,
+  .popup,
+  .dialog {
+    background-color: $dark-surface;
+    color: $dark-on-surface;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+
+    .close {
+      color: $dark-on-surface;
+    }
+  }
+
+  // Tooltips
+  .tooltip {
+    background-color: $dark-primary;
+    color: $dark-on-primary;
+  }
+
+  // Accordion/Toggle
+  .accordion,
+  .toggle {
+    border-color: $dark-border;
+
+    .accordion-header,
+    .toggle-header {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  // WordPress specific elements
+  .wp-block-cover,
+  .wp-block-cover-image {
+    &:not(.has-background-dim) {
+      &::before {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  // Media element optimizations
+  img,
+  video {
+    opacity: 0.85;
+  }
+
+  // SVG icons
+  svg {
+    fill: $dark-on-surface;
+  }
+
+  // Blockquotes
+  blockquote {
+    border-color: $dark-primary;
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  // Horizontal rules
+  hr {
+    border-color: $dark-border;
+  }
+
+  // Pagination
+  .pagination,
+  .nav-links {
+    .page-numbers {
+      background-color: $dark-surface;
+      color: $dark-on-surface;
+
+      &.current {
+        background-color: $dark-primary;
+        color: $dark-on-primary;
+      }
+    }
+  }
+
+  // Selection
+  ::selection {
+    background-color: rgba(187, 134, 252, 0.5);
+    color: #ffffff;
+  }
+
+  // Placeholder content
+  .placeholder {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  // Scrollbars
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $dark-background;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  // Focus states
+  *:focus {
+    outline-color: $dark-primary;
+  }
+
+  // Alert messages
+  .alert,
+  .notice,
+  .message {
+    &.info {
+      background-color: rgba(33, 150, 243, 0.15);
+      border-color: rgba(33, 150, 243, 0.3);
+    }
+
+    &.success {
+      background-color: rgba(76, 175, 80, 0.15);
+      border-color: rgba(76, 175, 80, 0.3);
+    }
+
+    &.warning {
+      background-color: rgba(255, 152, 0, 0.15);
+      border-color: rgba(255, 152, 0, 0.3);
+    }
+
+    &.error {
+      background-color: rgba(244, 67, 54, 0.15);
+      border-color: rgba(244, 67, 54, 0.3);
+    }
+  }
+}
+
+// For reduced motion preference
+@media (prefers-reduced-motion) {
+  body.theme-dark {
+    transition: none;
+
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
