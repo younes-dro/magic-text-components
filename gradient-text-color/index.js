@@ -86,7 +86,7 @@ const GradientTextColor = ({
   const applyGradient = useCallback(() => {
     onChange(
       toggleFormat(value, {
-        type: "magic-text/gradient",
+        type: "dro-magic-text/gradient",
         attributes: {
           style: `background: ${gradientCSS}; -webkit-background-clip: text; -webkit-text-fill-color: transparent;`,
           class: "magic-text-gradient",
@@ -97,7 +97,7 @@ const GradientTextColor = ({
 
 		const handleToolbarClick = useCallback(() => {
 			if (isActive) {
-				onChange(toggleFormat(value, { type: "magic-text/gradient" }));
+				onChange(toggleFormat(value, { type: "dro-magic-text/gradient" }));
 			} else {
 				setIsAddingGradient(true);
 			}
@@ -133,7 +133,7 @@ const GradientTextColor = ({
   );
 };
 
-registerFormatType("magic-text/gradient", {
+registerFormatType("dro-magic-text/gradient", {
   title: "Gradient",
   tagName: "span",
   className: null,

@@ -38,7 +38,7 @@ const UnderlineEffect = ({
   isActive,
   onChange,
   value,
-  textDomain = "magic-text",
+  textDomain = "dro-magic-text",
 }) => {
   const [isAddingUnderline, setIsAddingUnderline] = useState(false);
   const [popoverAnchor, setPopoverAnchor] = useState();
@@ -51,10 +51,10 @@ const UnderlineEffect = ({
   const applyUnderlineEffect = useCallback(() => {
     onChange(
       toggleFormat(value, {
-        type: "magic-text/underline-effect",
+        type: "dro-magic-text/underline-effect",
         attributes: {
           style: `--underline-border-color: ${borderColor};`,
-          class: "magic-text-underline-clip-effect",
+          class: "dro-magic-text-underline-clip-effect",
         },
       })
     );
@@ -62,7 +62,7 @@ const UnderlineEffect = ({
 
   const handleToolbarClick = useCallback(() => {
     if (isActive) {
-      onChange(toggleFormat(value, { type: "magic-text/underline-effect" }));
+      onChange(toggleFormat(value, { type: "dro-magic-text/underline-effect" }));
     } else {
       setIsAddingUnderline(true);
     }
@@ -73,7 +73,7 @@ const UnderlineEffect = ({
       <div ref={setPopoverAnchor}>
         <RichTextToolbarButton
           icon="editor-underline"
-          title={__("Underline Effect", "magic-text")}
+          title={__("Underline Effect", "dro-magic-text")}
           onClick={handleToolbarClick}
           isActive={isActive}
         />
@@ -93,8 +93,8 @@ const UnderlineEffect = ({
   );
 };
 
-registerFormatType("magic-text/underline-effect", {
-  title: __("Underline Effect", "magic-text"),
+registerFormatType("dro-magic-text/underline-effect", {
+  title: __("Underline Effect", "dro-magic-text"),
   tagName: "i",
   className: null,
   attributes: {
