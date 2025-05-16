@@ -1,4 +1,4 @@
-.magic-text-bg-image {
+.dro-magic-text-bg-image {
   display: inline-block;
   background-image: var(--text-bg-image);
   background-repeat: no-repeat;
@@ -20,7 +20,7 @@
       0 0 2px rgba(0,0,0,0.1);
   }
 }
-.magic-text-bg-popover {
+.dro-magic-text-bg-popover {
   .components-popover__content {
     min-width: 320px !important;
   }
