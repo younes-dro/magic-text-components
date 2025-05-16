@@ -54,7 +54,7 @@ const GradientStroke = ({
   isActive,
   value,
   onChange,
-  textDomain = "magic-text",
+  textDomain = "dro-magic-text",
 }) => {
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
   const [popoverAnchor, setPopoverAnchor] = useState();
@@ -73,7 +73,7 @@ const GradientStroke = ({
   const applyGradientStroke = useCallback(() => {
     onChange(
       toggleFormat(value, {
-        type: "magic-text/gradient-stroke",
+        type: "dro-magic-text/gradient-stroke",
         attributes: {
           style: `
             --gradient-stroke: ${gradient};
@@ -87,7 +87,7 @@ const GradientStroke = ({
 
   const handleToolbarClick = useCallback(() => {
     if (isActive) {
-      onChange(toggleFormat(value, { type: "magic-text/gradient-stroke" }));
+      onChange(toggleFormat(value, { type: "dro-magic-text/gradient-stroke" }));
     } else {
       setIsPopoverVisible(true);
     }
@@ -98,7 +98,7 @@ const GradientStroke = ({
       <div ref={setPopoverAnchor}>
         <RichTextToolbarButton
           icon="admin-appearance"
-          title={__("Gradient Stroke", "magic-text")}
+          title={__("Gradient Stroke", textDomain) || "Gradient Stroke"}
           onClick={handleToolbarClick}
           isActive={isActive}
         />
@@ -125,8 +125,8 @@ const GradientStroke = ({
   );
 };
 
-registerFormatType("magic-text/gradient-stroke", {
-  title: __("Gradient Stroke", "magic-text"),
+registerFormatType("dro-magic-text/gradient-stroke", {
+  title: __("Gradient Stroke", "dro-magic-text"),
   tagName: "bdo", // Using <bdo> tag to avoid conflicts
   className: null,
   attributes: {

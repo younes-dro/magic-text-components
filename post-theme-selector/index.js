@@ -7,12 +7,12 @@ import { ToggleControl } from "@wordpress/components";
 import { registerPlugin } from "@wordpress/plugins";
 import './themes';
 
-const textDomain = "magic-text";
+const textDomain = "dro-magic-text";
 const LABEL_SETTING_PANEL_TITLE = __("Display Mode", textDomain);
 
 const ThemeDocumentSettingsPanel = () => {
 	const { savedTheme } = useSelect((select) => ({
-		savedTheme: select("core/editor").getEditedPostAttribute("meta")?.magic_text_theme_meta
+		savedTheme: select("core/editor").getEditedPostAttribute("meta")?.dro_magic_text_theme_meta
 	}));
 
 	const [enableThemeSelector, setEnableThemeSelector] = useState(
@@ -90,10 +90,10 @@ const ThemeDocumentSettingsPanel = () => {
 		<PluginDocumentSettingPanel
 			name="magic-text-display-mode"
 			title={LABEL_SETTING_PANEL_TITLE}
-			className="magic-text-post-theme-selector-panel"
+			className="dro-magic-text-post-theme-selector-panel"
 			initialOpen={true}
 		>
-			<div className="magic-text-post-theme-selector-panel__content">
+			<div className="dro-magic-text-post-theme-selector-panel__content">
 				<ToggleControl
 					label={__("Enable Theme Selector", textDomain)}
 					checked={enableThemeSelector}
@@ -101,7 +101,7 @@ const ThemeDocumentSettingsPanel = () => {
 						setEnableThemeSelector(checked);
 						editPost({
 							meta: {
-								magic_text_theme_meta: checked
+								dro_magic_text_theme_meta: checked
 									? savedTheme || ListAvailableThemes[0].value
 									: "default"
 							}
@@ -119,7 +119,7 @@ const ThemeDocumentSettingsPanel = () => {
 							value={savedTheme || "default"}
 							onChange={(e) => {
 								editPost({
-									meta: { magic_text_theme_meta: e.target.value }
+									meta: { dro_magic_text_theme_meta: e.target.value }
 								});
 							}}
 						>
@@ -136,7 +136,7 @@ const ThemeDocumentSettingsPanel = () => {
 	);
 };
 
-registerPlugin("magic-text-post-theme-selector", {
+registerPlugin("dro-magic-text-post-theme-selector", {
 	render: ThemeDocumentSettingsPanel,
 	icon: "star-half",
 });

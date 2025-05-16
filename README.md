@@ -1,3 +1,13 @@
+# Magic Text Block Components - Deprecation Notice
+
+ℹ️ **This repository is now deprecated and will no longer be maintained.**
+
+All components from this repository have been migrated and are now part of the **Magic Text Block plugin** in the following repository:
+🔗 [Magic Text Block Plugin Repository](https://github.com/younes-dro/magic-text-block)
+
+Please use the main plugin repository for any updates, improvements, or issues.
+
+---
 
 # Magic Text Components
 
@@ -26,11 +36,13 @@ A collection of custom Gutenberg blocks and format types that allow users to app
 [🎥 Demo video here](https://www.awesomescreenshot.com/video/38083508?key=82ac6ceeec794b24b8e236819a4f1aab)
 
 ## Gradient Stroke
+
 <img src="https://github.com/user-attachments/assets/579bd1ac-ab0c-4e66-9cea-bb6652b96f5a" alt="gutenberg-text-background-image-effect" width="300">
 
 [🎥 Demo video here](https://www.awesomescreenshot.com/video/38191755?key=fbc0cdfce82132bd6dd6bd217c64df5b).
 
 ## Post/Page Theme Selector
+
 ![dark](https://github.com/user-attachments/assets/2a4227af-c9f9-405b-b97e-80e831577fa6)
 
 [🎥 Demo video here](https://www.awesomescreenshot.com/video/39031925?key=aa41ad83e0eedf3e614060c6e2e05ffb)
@@ -39,5 +51,7 @@ A collection of custom Gutenberg blocks and format types that allow users to app
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/younes-dro/magic-text-components.git
+```bash
+git clone https://github.com/younes-dro/magic-text-components.git
+
+```

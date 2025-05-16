@@ -9,7 +9,7 @@ import {
 } from "@wordpress/block-editor";
 import { Popover, Button, FontSizePicker } from "@wordpress/components";
 
-const textDomain = "magic-text";
+const textDomain = "dro-magic-text";
 
 const LABEL_POPOVER_TITLE =
   __("Custmze the Text background image", textDomain) ||
@@ -46,7 +46,7 @@ const TextBgImageUI = ({
   const fallbackFontSize = 16;
 
   return (
-    <Popover anchor={popoverAnchor} className="magic-text-bg-popover">
+    <Popover anchor={popoverAnchor} className="dro-magic-text-bg-popover">
       <div style={{ minWidth: "320px", padding: "16px" }}>
         <h4 style={{ marginBottom: "12px" }}>{LABEL_POPOVER_TITLE}</h4>
         <MediaUploadCheck>
@@ -95,10 +95,10 @@ const TextBgImage = ({ value, onChange, isActive }) => {
   const applyTxtBg = useCallback(() => {
     onChange(
       toggleFormat(value, {
-        type: "magic-text/text-bg-image",
+        type: "dro-magic-text/text-bg-image",
         attributes: {
           style: `--text-bg-image: url('${imageUrl}'); --text-size: ${fontSize}`,
-          class: "magic-text-bg-image",
+          class: "dro-magic-text-bg-image",
         },
       })
     );
@@ -106,7 +106,7 @@ const TextBgImage = ({ value, onChange, isActive }) => {
 
   const handleToolbarClick = useCallback(() => {
     if (isActive) {
-      onChange(toggleFormat(value, { type: "magic-text/text-bg-image" }));
+      onChange(toggleFormat(value, { type: "dro-magic-text/text-bg-image" }));
     } else {
       setIsAddingTxtBg(true);
     }
@@ -134,8 +134,8 @@ const TextBgImage = ({ value, onChange, isActive }) => {
     </>
   );
 };
-registerFormatType("magic-text/text-bg-image", {
-  title: __("Text bg"),
+registerFormatType("dro-magic-text/text-bg-image", {
+  title: __("Text bg", "dro-magic-text"),
   className: null,
   tagName: "mark",
   attributes: {
